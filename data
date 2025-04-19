@@ -1,0 +1,18 @@
+The earthquake data used in this project is sourced from the official **United States Geological Survey (USGS) Earthquake API**, which provides detailed seismic event data in JSON format.
+
+- **API Endpoint**:  
+  [https://earthquake.usgs.gov/fdsnws/event/1/](https://earthquake.usgs.gov/fdsnws/event/1/)
+
+- **Data Range**:  
+  The API supports filtering by date, location, and magnitude. For this project, the focus is on capturing daily earthquake events.
+
+- **Start and End Dates**:  
+  These are dynamically set using **Azure Data Factory** parameters during pipeline execution. Typically:
+  - `start_time` = `utcnow() - 1 day`
+  - `end_time` = `utcnow()`
+
+- **Output Format**:  
+  JSON, containing metadata and fields such as:
+  - `time`, `place`, `magnitude`, `depth`
+  - `coordinates` (latitude, longitude)
+  - `id`, `eventType`, `status`, and more
